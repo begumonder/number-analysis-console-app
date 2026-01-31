@@ -29,3 +29,5 @@ Toplam, ortalama, en büyük ve en küçük değerleri hesaplar, ayrıca çift v
 
 ## Not
 Bu proje, temel programlama konularını pekiştirmek amacıyla geliştirilmiştir.
+Bu uygulama, kodun okunabilirliğini ve sürdürülebilirliğini artırmak amacıyla metotlara ayrılarak yeniden düzenlenmiştir.
+
