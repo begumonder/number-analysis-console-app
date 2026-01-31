@@ -76,6 +76,7 @@ namespace miniproje1
             Console.WriteLine("Girilen sayıların en küçüğü= "+enkucuk);
             Console.WriteLine(ciftsayi+" adet çift sayı vardır.");
             Console.WriteLine(teksayi+" adet tek sayı vardır.");
-        }
+        } //Add initial version of number analysis console application
     }
 }
+
