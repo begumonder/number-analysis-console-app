@@ -6,77 +6,99 @@ namespace miniproje1
     {
         static void Main(string[] args)
         {
-            //        Görev:
-
-            //            Kullanıcıdan 5 adet sayı al
-
-            //            Bu sayıları bir diziye kaydet
-
-            //Aşağıdakileri ekrana yazdır:
-
-            //            Girilen sayıların toplamı
-
-            //            En büyük sayı
-
-            //En küçük sayı
-
-            //Çift sayı adedi
-
-            //Tek sayı adedi
-
-            //Bonus(isteğe bağlı):
-
-            //Ortalama hesapla
-
-            //Negatif sayı girilirse uyarı ver
-            
-            int []sayilar =new int[5];
-            double toplam = 0;
-            int enbuyuk = 0;
-            int enkucuk = 0;
-            int ciftsayi = 0;
-            int teksayi = 0;
-            double ortalama = 0;
-            for (int i=0;i<sayilar.Length;i++)
+            int[] sayilar= KullaniciGirisi();
+        
+            Console.WriteLine("Girilen sayıların toplamı= " + Toplam(sayilar));
+            Console.WriteLine("Girilen sayıların ortalaması= " + Ortalama(sayilar));
+            Console.WriteLine("Girilen sayıların en büyüğü= " + EnBuyukSayi(sayilar));
+            Console.WriteLine("Girilen sayıların en küçüğü= " + EnKucukSayi(sayilar));
+            Console.WriteLine(CiftSayi(sayilar) + " adet çift sayı vardır.");
+            Console.WriteLine(TekSayi(sayilar) + " adet tek sayı vardır.");
+        }
+        //Kullanıcıdan girilen kapasite kadar sayı girişi alan metod
+        static int[] KullaniciGirisi()
+        {
+            Console.Write("Kaç adet sayı girişi yapacaksınız: ");
+            int kapasite = int.Parse(Console.ReadLine());
+            int[] sayilar = new int[kapasite];
+            for (int i = 0; i < sayilar.Length; i++)
             {
-                Console.Write((i+ 1) + ".sayıyı giriniz: ");
+                Console.Write((i + 1) + ".sayıyı giriniz: ");
                 sayilar[i] = int.Parse(Console.ReadLine());
-                toplam = sayilar[i] + toplam;
-              
-                if (sayilar[i]%2==0)
+            }
+            return sayilar;
+        }
+        //dizideki saıların toplamını bulan metod 
+        static int Toplam(int[] sayi)
+        {
+            int toplam = 0;
+            for (int i = 0; i < sayi.Length; i++)
+            {
+                toplam = toplam + sayi[i];
+            }
+            return toplam;
+        }
+        //dizideki sayılardan en büyüğünü bulan metod
+        static int EnBuyukSayi(int[] sayi)
+        {
+            int enbuyuk = sayi[0];
+            for (int i=0;i<sayi.Length;i++)
+            {
+                
+                if (sayi[i]>enbuyuk)
+                {
+                    enbuyuk=sayi[i];
+                }
+                
+            }
+            return enbuyuk;
+        }
+        //dizideki sayılardan en küçüğünü bulan metod
+        static int EnKucukSayi(int[]sayi)
+        {
+            int enkucuk = sayi[0];
+            for(int i=0; i<sayi.Length;i++)
+            {
+                if(sayi[i]<enkucuk)
+                {
+                    enkucuk=sayi[i];
+                }
+            }
+            return enkucuk;
+        }
+        //dizideki sayiların ortalmasını bulan metod 
+        static double Ortalama(int[] sayi)
+        {
+
+            double ortalama = (double)Toplam(sayi) / sayi.Length;
+            return ortalama;
+        }
+        //dizideki çift sayiların adedini bula metod
+        static int CiftSayi(int[] sayi)
+        {
+            int ciftsayi = 0;
+            for (int i =0;i<sayi.Length;i++)
+            {
+                if (sayi[i]%2==0)
                 {
                     ciftsayi++;
                 }
-                else
+            }
+            return ciftsayi;
+        }
+         //dizideki tek sayıarın adedini bula metod
+        static int TekSayi(int[] sayi)
+        {
+            int teksayi = 0;
+            for (int i = 0; i < sayi.Length; i++)
+            {
+                if (sayi[i] % 2 !=0)
                 {
                     teksayi++;
                 }
-                if (i==0)
-                {
-                    enbuyuk = sayilar[i];
-                    enkucuk = sayilar[i];
-                }
-                else
-                {
-                    if (sayilar[i] > enbuyuk)
-                    {
-                        enbuyuk = sayilar[i];
-                    }
-                    if (sayilar[i] < enkucuk)
-                    {
-                        enkucuk = sayilar[i];
-                    }
-                }
-              
             }
-            ortalama = toplam / sayilar.Length;
-            Console.WriteLine("Girilen sayıların toplamı= "+ toplam);
-            Console.WriteLine("Girilen sayıların ortalaması= " + ortalama);
-            Console.WriteLine("Girilen sayıların en büyüğü= "+enbuyuk);
-            Console.WriteLine("Girilen sayıların en küçüğü= "+enkucuk);
-            Console.WriteLine(ciftsayi+" adet çift sayı vardır.");
-            Console.WriteLine(teksayi+" adet tek sayı vardır.");
-        } //Add initial version of number analysis console application
+            return teksayi;
+        }
     }
 }
 
